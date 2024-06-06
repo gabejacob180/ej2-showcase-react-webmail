@@ -1,35 +1,156 @@
 // import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
-
-// import { IPages } from '../index';
-// import {
-//     Sidebar, AppBar, TreeView, Toolbar, Accordion, ContextMenu, MenuItemModel, ContextMenuModel, ClickEventArgs,
-//     NodeSelectEventArgs, MenuEventArgs, BeforeOpenCloseMenuEventArgs
-// } from '@syncfusion/ej2-navigations';
-// import { ListView, SelectEventArgs, SortOrder } from '@syncfusion/ej2-lists';
-// import { Button } from '@syncfusion/ej2-buttons';
-// import { AutoComplete, DropDownList, ChangeEventArgs, SelectEventArgs as DropDownSelectEventArgs } from '@syncfusion/ej2-dropdowns';
-// import { Dialog, Popup } from '@syncfusion/ej2-popups';
-// import { Ajax } from '@syncfusion/ej2-base';
-// import { Splitter } from '@syncfusion/ej2-layouts';
-// import { folderData, messageDataSourceNew, getContacts, userName, userMail } from '../datasource';
-// import { showMailDialog, selectedToolbarItem, resetSelectedToolbarItem } from './newmail';
-// import { selectedRPToolbarItem, resetRPSelectedItem, bindReadingPaneData, ddlLastRplyValueRP,
-//     dropdownSelectRP, showMailDialogRP } from '../readingpane';
-import 'styles/css/outlook.css'
+import { ButtonComponent } from '@syncfusion/ej2-react-buttons';
+import { AppBarComponent } from "@syncfusion/ej2-react-navigations";
+import './App.css';
+// import './outlook.css';
+import { TreeViewComponent } from '@syncfusion/ej2-react-navigations';
+// import { folderData } from './datasource';
 
 function App() {
-
+  const hierarchicalData: { [key: string]: Object }[] = [
+    {
+        id: '01', name: 'Local Disk (C:)', expanded: true,
+        subChild: [
+            {
+                id: '01-01', name: 'Program Files',
+                subChild: [
+                    { id: '01-01-01', name: '7-Zip' },
+                    { id: '01-01-02', name: 'Git' },
+                    { id: '01-01-03', name: 'IIS Express' },
+                ]
+            },
+            {
+                id: '01-02', name: 'Users', expanded: true,
+                subChild: [
+                    { id: '01-02-01', name: 'Smith' },
+                    { id: '01-02-02', name: 'Public' },
+                    { id: '01-02-03', name: 'Admin' },
+                ]
+            },
+            {
+                id: '01-03', name: 'Windows',
+                subChild: [
+                    { id: '01-03-01', name: 'Boot' },
+                    { id: '01-03-02', name: 'FileManager' },
+                    { id: '01-03-03', name: 'System32' },
+                ]
+            },
+        ]
+    },
+    {
+        id: '02', name: 'Local Disk (D:)',
+        subChild: [
+            {
+                id: '02-01', name: 'Personals',
+                subChild: [
+                    { id: '02-01-01', name: 'My photo.png' },
+                    { id: '02-01-02', name: 'Rental document.docx' },
+                    { id: '02-01-03', name: 'Pay slip.pdf' },
+                ]
+            },
+            {
+                id: '02-02', name: 'Projects',
+                subChild: [
+                    { id: '02-02-01', name: 'ASP Application' },
+                    { id: '02-02-02', name: 'TypeScript Application' },
+                    { id: '02-02-03', name: 'React Application' },
+                ]
+            },
+            {
+                id: '02-03', name: 'Office',
+                subChild: [
+                    { id: '02-03-01', name: 'Work details.docx' },
+                    { id: '02-03-02', name: 'Weekly report.docx' },
+                    { id: '02-03-03', name: 'Wish list.csv' },
+                ]
+            },
+        ]
+    },
+    {
+        id: '03', name: 'Local Disk (E:)', icon: 'folder',
+        subChild: [
+            {
+                id: '03-01', name: 'Pictures',
+                subChild: [
+                    { id: '03-01-01', name: 'Wind.jpg' },
+                    { id: '03-01-02', name: 'Stone.jpg' },
+                    { id: '03-01-03', name: 'Home.jpg' },
+                ]
+            },
+            {
+                id: '03-02', name: 'Documents',
+                subChild: [
+                    { id: '03-02-01', name: 'Environment Pollution.docx' },
+                    { id: '03-02-02', name: 'Global Warming.ppt' },
+                    { id: '03-02-03', name: 'Social Network.pdf' },
+                ]
+            },
+            {
+                id: '03-03', name: 'Study Materials',
+                subChild: [
+                    { id: '03-03-01', name: 'UI-Guide.pdf' },
+                    { id: '03-03-02', name: 'Tutorials.zip' },
+                    { id: '03-03-03', name: 'TypeScript.7z' },
+                ]
+            },
+        ]
+    }
+  ];
+  
+  const fields: Object = { dataSource: hierarchicalData, id: 'id', text: 'name', child: 'subChild' };
   return (
-    <>
-      <div className='outlook-container'>
-        <div className='header navbar'>
-
-        </div>
+    // <div>
+    //   <div className="row">
+    //     <div className="col-md-12">
+    //       <h5>{'Dark'}</h5>
+    //     </div>
+    //   </div>
+    //   <div className="row">
+    //     <div className="col-md-12">
+    //       <AppBarComponent colorMode={'Dark'}>
+    //         <ButtonComponent cssClass='e-inherit menu' iconCss='e-icons e-menu'></ButtonComponent>
+    //         <ButtonComponent cssClass='e-inherit home e-appbar-menu'>Home</ButtonComponent>
+    //         <div className='e-appbar-spacer'></div>
+    //         <div style={{ width: '200px', marginRight: '10px' }}>
+    //           <span className='e-input-group e-control-wrapper e-inherit'>
+    //             <input type='text' className='e-searchinput e-input' placeholder='Search'/>
+    //             <span className='e-icons e-search e-input-group-icon'></span>
+    //           </span>
+    //         </div>
+    //         <div className="e-appbar-separator"></div>
+    //         <ButtonComponent isPrimary={false} cssClass={'e-inherit login'}>Login</ButtonComponent>
+    //       </AppBarComponent>
+    //     </div>
+    //   </div>
+    //   <br />
+    // </div>
+    
+    <div className='outlook-container'>
+      <div className='header navbar'>
+        <AppBarComponent colorMode="Dark" id="appbar">
+          <ButtonComponent cssClass='e-inherit menu' iconCss='e-icons e-menu'></ButtonComponent>
+            <ButtonComponent cssClass='e-inherit home e-appbar-menu'>Home</ButtonComponent>
+            <div className='e-appbar-spacer'></div>
+            <div style={{ width: '200px', marginRight: '10px' }}>
+              <span className='e-input-group e-control-wrapper e-inherit'>
+                <input type='text' className='e-searchinput e-input' placeholder='Search' />
+                <span className='e-icons e-search e-input-group-icon'></span>
+              </span>
+            </div>
+            <div className="e-appbar-separator"></div>
+            <ButtonComponent isPrimary={false} cssClass={'e-inherit login'}>Login</ButtonComponent>
+        </AppBarComponent>
       </div>
-    </>
+      <div className='sidebar'>
+        <TreeViewComponent fields={fields} cssClass={'custom'} >
+
+        </TreeViewComponent>
+      </div>
+    </div>
+     
+    /* <TreeViewComponent fields={fields}>
+      what is happening
+    </TreeViewComponent> */
   )
 }
 

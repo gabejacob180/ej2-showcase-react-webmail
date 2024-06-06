@@ -17,6 +17,8 @@
     "@syncfusion/ej2-lists": "^25.2.3",
     "@syncfusion/ej2-navigations": "^25.2.6",
     "@syncfusion/ej2-popups": "^25.2.6",
+    "@syncfusion/ej2-react-buttons": "^25.2.7",
+    "@syncfusion/ej2-react-navigations": "^25.2.6",
     "crossroads": "^0.12.2",
     "hasher": "^1.2.0",
     "react": "^18.2.0",
