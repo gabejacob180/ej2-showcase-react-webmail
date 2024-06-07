@@ -1,12 +1,12 @@
 /**
  *  New Mail page handler
  */
-import { IPages } from '../index';
-import { Toolbar, ClickEventArgs } from '@syncfusion/ej2-navigations';
 import { Button } from '@syncfusion/ej2-buttons';
-import { DropDownList,Mention, MultiSelect, FilteringEventArgs } from '@syncfusion/ej2-dropdowns';
-import { getContacts } from './datasource';
 import { Query } from '@syncfusion/ej2-data';
+import { DropDownList, FilteringEventArgs, Mention, MultiSelect } from '@syncfusion/ej2-dropdowns';
+import { ClickEventArgs, Toolbar } from '@syncfusion/ej2-navigations';
+import { getContacts } from './datasource';
+import { IPages } from './index';
 
 declare let window: IPages;
 let autoToList: MultiSelect = new MultiSelect();
